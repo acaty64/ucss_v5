@@ -20,8 +20,9 @@ class AUsers01Test extends TestCase
       $user = factory(User::class)->create();
       $facultad_id = 1;
       $sede_id = 1;
-
-      $this->authUser($user->id, $facultad_id, $sede_id, 5);
+      $type_id = 5;   // Administrador
+     
+      $this->authUser($user->id, $facultad_id, $sede_id, $type_id);
       $response = $this->actingAs($user);
 
       // Then
@@ -38,7 +39,7 @@ class AUsers01Test extends TestCase
 
   		$facultad_id = 1;
   		$sede_id = 1;
-      $type_id = 5;
+      $type_id = 5;   // Administrador
   		$this->authUser($admin->id, $facultad_id, $sede_id, $type_id);
 
       $response = $this->actingAs($admin);
