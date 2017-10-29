@@ -26,4 +26,13 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+     /**
+     * Get the datauser that owns the data.
+     */
+    public function datauser()
+    {
+        return $this->HasOne('App\DataUser');
+    }   
+
 }

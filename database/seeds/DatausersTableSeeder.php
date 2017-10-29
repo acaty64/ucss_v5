@@ -2,10 +2,9 @@
 
 use App\DataUser;
 use App\User;
-use Illuminate\Container\factory;
 use Illuminate\Database\Seeder;
 
-class DatausersTableSeeder extends Seeder
+class DataUsersTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -26,9 +25,12 @@ class DatausersTableSeeder extends Seeder
             'email2' => 'master@gmail.com',
             'whatsapp' => false
             ]);
+
+
+
         $users = User::where('id','>',1)->get();
         foreach ($users as $user) {
-            factory(DataUser::class)->create([
+            factory(App\DataUser::class)->create([
                     'user_id' => $user->id,
                     'cdocente' => str_pad($user->id, 6, '0', STR_PAD_LEFT),
                     'email1' => $user->email,
