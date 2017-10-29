@@ -24,7 +24,7 @@ class AUsers01Test extends TestCase
      
       $this->authUser($user->id, $facultad_id, $sede_id, $type_id);
       $response = $this->actingAs($user);
-dd(Session::get('ctype'));
+
       // Then
       $response = $this->get('administrador/user/index')
           ->assertStatus(200);
