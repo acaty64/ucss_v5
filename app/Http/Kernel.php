@@ -38,6 +38,19 @@ class Kernel extends HttpKernel
         ],
 
 
+        'responsable' => [
+            'web',
+            'auth',
+            'can:is_responsable,'.Acceso::class,
+        ],         
+
+        'consulta' => [
+            'web',
+            'auth',
+            'can:is_consulta,'.Acceso::class,
+        ],         
+
+
         'admin' => [
             'web',
             'auth',

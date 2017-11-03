@@ -40,6 +40,7 @@ class RouteServiceProvider extends ServiceProvider
         $this->mapWebRoutes();
 
         $this->mapAdminRoutes();
+        $this->mapConsultaRoutes();
         //
     }
 
@@ -80,6 +81,28 @@ class RouteServiceProvider extends ServiceProvider
             'prefix' => 'administrador',
         ], function ($router) {
             require base_path('routes/admin.php');
+        });
+    }
+
+    protected function mapConsultaRoutes()
+    {
+        Route::group([
+            'middleware' => 'consulta',
+            'namespace' => $this->namespace,
+            'prefix' => 'consulta',
+        ], function ($router) {
+            require base_path('routes/consulta.php');
+        });
+    }
+
+    protected function mapResponsableRoutes()
+    {
+        Route::group([
+            'middleware' => 'responsable',
+            'namespace' => $this->namespace,
+            'prefix' => 'responsable',
+        ], function ($router) {
+            require base_path('routes/responsable.php');
         });
     }
 }

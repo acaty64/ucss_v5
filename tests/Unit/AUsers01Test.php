@@ -18,18 +18,20 @@ class AUsers01Test extends TestCase
    {
       //Having an administrator user
       $user = factory(User::class)->create();
-      $facultad_id = 1;
-      $sede_id = 1;
-      $type_id = 5;   // Administrador
-     
-      $this->authUser($user->id, $facultad_id, $sede_id, $type_id);
+    
       $response = $this->actingAs($user);
 
-      // Then
-      $response = $this->get('administrador/user/index')
-          ->assertStatus(200);
-      //Then -> view Laravel DUSK
-      //$response->assertStatus(200);
+      Session::put('facultad_id',1);
+      Session::put('sede_id',1);
+      Session::put('type_id',5); // Administrador
+      Session::put('ctype','Administrador');
+
+      $response = $this->get(route('administrador.user.index'));
+      $response->assertStatus(200);
+      /*$this->markTestIncomplete(
+            'This test has not been implemented yet.'
+          );
+      */
    }
 
 	function test_create_a_guest_user()

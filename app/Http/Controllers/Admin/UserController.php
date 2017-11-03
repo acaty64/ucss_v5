@@ -36,6 +36,7 @@ class UserController extends Controller
         foreach ($types as $type) {
             $xtypes[$type->id] = $type->name;
         }
+
         return view('admin.user.index')
                 ->with('title',$title)
                 ->with('users',$accesos)
